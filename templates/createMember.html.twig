@@ -1,0 +1,80 @@
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    page - Admin
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block projectsNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+
+
+
+    <form method="post" action="/newMember">
+
+        <p>
+            Title:
+            <br>
+            <input type="text" name="id" value=" " required>
+        </p>
+
+        <p>
+            Student Id:
+            <br>
+            <input type="text" name="currentBeltGrade" value=" " required>
+        </p>
+
+        <p>
+            Supervisor Id:
+            <br>
+            <input type="text" name="currentStatus" value=" " required>
+        </p>
+
+        <p>
+            Password:
+            <br>
+            <input type="text" name="nextGrade" value=" " required>
+        </p>
+
+        <p>
+            Project Id:
+            <br>
+            <input type="text" name="nextBeltGradeSyllabus" value=" "required>
+        </p>
+
+        <p>
+            Status:
+            <br>
+            <input type="text" name="requireStatus" value=" "required>
+        </p>
+
+        <p>
+            Name:
+            <br>
+            <input type="text" name="name" value=" "required>
+        </p>
+
+
+        <p>
+
+            <input type="submit"  value="Create">
+        </p>
+
+
+
+
+
+
+
+    </form>
+
+
+
+
+
+
+
+{% endblock %}

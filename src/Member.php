@@ -13,27 +13,43 @@ use Mattsmithdev\PdoCrud\DatabaseTable;
 
 class Member extends DatabaseTable
 {
-    private $studentId;
+    private $id;
     private $currentBeltGrade;
     private $currentStatus;
     private $nextGrade;
     private $nextBeltGradeSyllabus;
     private $requireStatus;
+    private $name;
 
     /**
      * @return mixed
      */
-    public function getStudentId()
+    public function getName()
     {
-        return $this->studentId;
+        return $this->name;
     }
 
     /**
-     * @param mixed $studentId
+     * @param mixed $name
      */
-    public function setStudentId($studentId)
+    public function setName($name)
     {
-        $this->studentId = $studentId;
+        $this->name = $name;
+    }
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**

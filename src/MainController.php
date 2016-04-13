@@ -14,6 +14,7 @@ class MainController
     /**
      * render the days page template
      */
+
     public function daysAction(Request $request, Application $app)
     {
         $days = array(
@@ -80,6 +81,8 @@ class MainController
         $password = $user->getPassword();
         $role = $user->getRole();
 
+        //var_dump($students);
+        //die();
 
 
         // authenticate!
@@ -183,16 +186,18 @@ class MainController
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
-    public function detailAction (Request $request, Application $app,$id)
+    public function detailAction (Request $request, Application $app, $id)
     {
-        $memberRow = Member::getOneBy($id);
+
+        $member = Member::getOneById($id);
 
         $argsArray = [
-            'members' => $membersRow,
+            'member' => $member,
+        ];
 
-    ];
+
         $template = 'detail';
-        return $app ['twig']->render($template . 'html.twig', $argsArray);
+        return $app ['twig']->render($template . '.html.twig', $argsArray);
 
 
     }
