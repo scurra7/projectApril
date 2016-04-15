@@ -23,6 +23,23 @@ class Login extends DatabaseTable
     private $id;
     private $password;
     private $role;
+    private $username;
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
 
     /**
      * @return mixed
@@ -53,9 +70,41 @@ class Login extends DatabaseTable
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $hashedPassword=password_hash($password, PASSWORD_DEFAULT);
+        $this->password = $hashedPassword;
     }
 
+    public static function canFindMatchingUsernameAndPassword($username, $password)
+    {
+        $user = Login::getOneByUsername($username);
+       // var_dump($user);
+        //die();
+        // if no record has this username, return FALSE
+        if(null == $user)
+        {
+            return false;
+        }
+
+        // hashed correct password
+        $hashedStoredPassword = $user->getPassword();
+
+        return password_verify($password, $hashedStoredPassword);
+    }
+
+    public static function FindingRole($username)
+    {
+        $user = Login::getOneByUsername($username);
+
+        if(null == $user)
+        {
+            return false;
+        }
+
+        // hashed correct password
+        //$hashedStoredPassword = $user->getPassword();
+
+        return $user->getRole();
+    }
     /**
      * @return mixed
      */
@@ -65,7 +114,7 @@ class Login extends DatabaseTable
     }
 
     /**
-     * @param mixed $role
+     * @param mixed $username
      */
     public function setRole($role)
     {
@@ -85,9 +134,9 @@ class Login extends DatabaseTable
         $db = new DatabaseManager();
         $connection = $db->getDbh();
 
-        $sql = 'SELECT * FROM login WHERE role=:role';
+        $sql = 'SELECT * FROM logins WHERE username=:username';
         $statement = $connection->prepare($sql);
-        $statement->bindParam(':role', $role, \PDO::PARAM_STR);
+        $statement->bindParam(':username', $username, \PDO::PARAM_STR);
         $statement->setFetchMode(\PDO::FETCH_CLASS, __CLASS__);
         $statement->execute();
 

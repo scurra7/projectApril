@@ -3,7 +3,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../app/configDatabase.php';
 
 use Itb\User;
-use Itb\Student;
+use Itb\Login;
 
 /*define('DB_HOST','localhost');
 define('DB_USER', 'fred');
@@ -22,25 +22,24 @@ $student->setRole(Student::ROLE_ADMIN);*/
 
 $matt = new Login();
 
-$matt->setPassword('1234');
-$matt->setRole(User::ROLE_ADMIN);
+$matt->setPassword('001');
+$matt->setUsername("admin");
+$matt->setRole(Login::ROLE_ADMIN);
 
-$joe = new User();
+$joe = new Login();
 
-$joe->setPassword('1234');
-$joe->setRole(User::ROLE_USER);
+$joe->setPassword('002');
+$joe->setUsername("student");
+$joe->setRole(Login::ROLE_USER);
 
-$admin = new User();
 
-$admin->setPassword('admin');
-$admin->setRole(User::ROLE_ADMIN);
 
-User::insert($matt);
-User::insert($joe);
-User::insert($admin);
-$users = User::getAll();
+Login::insert($matt);
+Login::insert($joe);
+
+$users = Login::getAll();
 var_dump($users);
 
-Student::insert($student);
+/*Student::insert($student);
 $students = Student::getAll();
-var_dump($students);
+var_dump($students);*/

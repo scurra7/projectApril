@@ -16,7 +16,7 @@ class User extends DatabaseTable
     private $id;
     private $users;
     private $password;
-    private  $role;
+    private $role;
 
     /**
      * @return mixed

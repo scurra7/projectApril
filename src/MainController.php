@@ -67,40 +67,33 @@ class MainController
 
     public function loginAction(Request $request, Application $app)
     {
-        // $argsArray = [];
-        $paramsPost = $request->request->all();
-        $id = $paramsPost['id'];
-        $password = $paramsPost['password'];
 
-        $sanitId = filter_var($id, FILTER_SANITIZE_STRING);
-        $sanitPassword = filter_var($password, FILTER_SANITIZE_STRING);
+        // default is bad login
+        $isLoggedIn = false;
 
-        $user = Login::searchByColumn('role',$sanitId);
-        $user=$user[0];
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-        $password = $user->getPassword();
-        $role = $user->getRole();
+        // search for user with username in repository
+        $isLoggedIn = Login::canFindMatchingUsernameAndPassword($username, $password);
+        $isRole = Login::FindingRole($username);
+        // action depending on login success
 
-        //var_dump($students);
-        //die();
+        if($isLoggedIn) {
 
-
-        // authenticate!
-        if ('admin' === $role  && $password === $sanitPassword) {
+            if($isRole)
+            {
             // store username in 'user' in 'session'
-            $app['session']->set('user', array('username' => $sanitId));
-
+            $app['session']->set('user', array('username' => $username));
             // success - redirect to the secure admin home page
             return $app->redirect('/admin');
-        }
-
-        // authenticate!
-        if ('student' === $role  && $password === $sanitPassword) {
-            // store username in 'user' in 'session'
-            $app['session']->set('user', array('username' => $sanitId));
-
-            // success - redirect to the secure admin home page
-            return $app->redirect('/student');
+            }
+            else {
+                // store username in 'user' in 'session'
+                $app['session']->set('user', array('username' => $username));
+                // success - redirect to the secure admin home page
+                return $app->redirect('/student');
+            }
         }
 
 

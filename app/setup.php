@@ -16,6 +16,8 @@ $twig = new Twig_Environment($loader);
 // ------------
 $app = new Silex\Application();
 
+$app['debug']=true;
+
 // register Twig with Silex
 // ------------
 
