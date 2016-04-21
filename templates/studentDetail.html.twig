@@ -1,0 +1,42 @@
+{% extends '_base.html.twig' %}
+
+{# ----------------------------------------#}
+{% block title %}
+    Member page
+{% endblock %}
+
+{# ----------------------------------------#}
+{% block membersNavStyle %}current_page{% endblock %}
+
+{# ----------------------------------------#}
+{% block main %}
+
+    <h2>Student Page</h2>
+
+    <ul>
+
+
+        <li><p>Id</p>{{ student.id }}</li>
+
+
+        <li><p>Student</p>{{ student.surname }}</li>
+
+
+        <li>  <p>Surname</p>{{ student.firstName }}</li>
+
+
+        <li><p>Joined Club</p>{{ student.joinedClub }}</li>
+
+
+        <li><p>Last Grading</p>{{ student.lastGrading }}</li>
+
+
+
+        <li><p>Current Grading</p>{{ student.currentGrade }}</li>
+
+
+
+
+    </ul>
+
+{% endblock %}

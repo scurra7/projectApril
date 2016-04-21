@@ -60,8 +60,8 @@ class MemberController
     public function editMemberDetailsAction(Request $request, Application $app)
     {
         $user = $app['session']->get('user');
-        $id = $user['id'];
-
+        //$id = $user['id'];
+       // $username = $user['username'];
 
         $paramsPost = $request->request->all();
         $id = $paramsPost['id'];
@@ -96,11 +96,11 @@ class MemberController
         $member = Member::getAll();
 
         $argsArray = [
-            'text' => 'Update was succesfull',
+            'username'=> '',
             'members' => $member,
         ];
 
-        $templateName = 'editMember';
+        $templateName = 'admin';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
@@ -114,9 +114,12 @@ class MemberController
 
         ];
 
+        //return $app->redirect('/admin');
 
         $templateName = 'createMember';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
+
+
     }
 
 
@@ -153,16 +156,19 @@ class MemberController
 
 
 
-        $succesfullUpdate = Member::insert($member);
+        $succesfulUpdate = Member::insert($member);
 
         $member = Member::getAll();
+        $user = $app['session']->get('user');
 
         $argsArray = [
-            'text' => 'Insert was succesfull',
+            'username'=> $user['username'],
             'members' => $member,
+            /*'text' => 'Insert was  successful',
+            */
         ];
 
-        $templateName = 'editMember';
+        $templateName = 'admin';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
@@ -170,32 +176,30 @@ class MemberController
     public function deleteMemberTableDisplayAction(Request $request, Application $app)
     {
 
-        $member = Member::getAll();
+        $members = Member::getAll();
 
 
-        $argsArray = [
-            'members' => $member,
+
+       $argsArray = [
+            'members' => $members,
+            'text' => ''
         ];
-
+        // print("hello");
+       //  die();
         $templateName = 'deleteMember';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
+
+       // return $app->redirect('/admin');
     }
 
     public function deleteMemberAction(Request $request, Application $app, $id)
     {
 
-        $deleteSuccesfull = Member::delete($id);
-
-        $members = Member::getAll();
-
-        $argsArray = [
-            'text' => 'Delete was successfull',
-            'members' => $members
-        ];
+        $deleteSuccessful = Member::delete($id);
 
 
-        $templateName = 'deleteMember';
-        return $app['twig']->render($templateName . '.html.twig', $argsArray);
+        return $app->redirect('/admin');
+
     }
 
 

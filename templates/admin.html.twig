@@ -20,11 +20,7 @@
 
     <h2>Members List</h2>
 
-    <a href="/editMemberTableDisplay">Edit Members</a>
-    <br>
-    <a href="/createMember">Create Members</a>
-    <br>
-    <a href="/deleteMemberTableDisplay">Remove Members</a>
+
 
     <table>
         <tr>
@@ -35,6 +31,9 @@
             <th>Next Belt Grade Syllabus</th>
             <th>Required Status</th>
             <th>Name</th>
+            <th>Edit</th>
+            <th>Create</th>
+            <th>Remove</th>
         </tr>
 
         {% for member in members %}
@@ -47,6 +46,9 @@
                 <td>{{member.nextBeltGradeSyllabus }}</td>
                 <td>{{member.requireStatus  }}</td>
                 <td><a href="/detail/{{ member.id }}">{{  member.name }}</a></td>
+                <td><a href="/editMemberTableDisplay">Edit</a></td>
+                <td><a href="/createMember">Create</a></td>
+                <td><a href="/deleteMemberTableDisplay">Remove</a></td>
             </tr>
 
 

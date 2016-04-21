@@ -12,11 +12,32 @@ use Mattsmithdev\PdoCrud\DatabaseTable;
 
 class Student extends DatabaseTable
 {
+    /**
+     *
+     * @var
+     */
     private $id;
     private $surname;
     private $firstName;
     private $joinedClub;
     private $lastGrading;
+    private $currentGrading;
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentGrading()
+    {
+        return $this->currentGrading;
+    }
+
+    /**
+     * @param mixed $currentGrading
+     */
+    public function setCurrentGrading($currentGrading)
+    {
+        $this->currentGrading = $currentGrading;
+    }
 
     /**
      * @return mixed

@@ -64,7 +64,6 @@ class MainController
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
-
     public function loginAction(Request $request, Application $app)
     {
 
@@ -187,7 +186,8 @@ class MainController
         $argsArray = [
             'member' => $member,
         ];
-
+     /*   print('print');
+        die();*/
 
         $template = 'detail';
         return $app ['twig']->render($template . '.html.twig', $argsArray);

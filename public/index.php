@@ -40,6 +40,8 @@ $app->post('/newMember', \Itb\Utility::controller('Itb', 'member/newMember'));
 $app->get('/deleteMemberTableDisplay', \Itb\Utility::controller('Itb', 'member/deleteMemberTableDisplay'));
 $app->get('/deleteMember/{id}', \Itb\Utility::controller('Itb', 'member/deleteMember'));
 
+$app->get('/studentDetail/{id}', \Itb\Utility::controller('Itb', 'student/studentDetail'));
+
 //$app->post('/admin/barcode', \Itb\Utility::controller('Itb', '/'));
 
 /*$member= Member::getAll();
