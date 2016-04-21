@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b3489072f57f17de126695fb17f6d592",
+    "hash": "f86767d395161777645e8ac00ae9f288",
     "content-hash": "3cbbb5a253071b624db36ae0e5e5d64f",
     "packages": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dr-matt-smith/pdo-crud-for-free.git",
-                "reference": "3bc278fab3967fdc559d97e039a569f2c86576b9"
+                "reference": "8a7da91b24f9f8c68ebcf2fe8bf79aca9719c4c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dr-matt-smith/pdo-crud-for-free/zipball/3bc278fab3967fdc559d97e039a569f2c86576b9",
-                "reference": "3bc278fab3967fdc559d97e039a569f2c86576b9",
+                "url": "https://api.github.com/repos/dr-matt-smith/pdo-crud-for-free/zipball/8a7da91b24f9f8c68ebcf2fe8bf79aca9719c4c5",
+                "reference": "8a7da91b24f9f8c68ebcf2fe8bf79aca9719c4c5",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "mattsmithdev",
                 "pdo-crud-for-free"
             ],
-            "time": "2016-03-14 09:41:56"
+            "time": "2016-04-19 16:17:00"
         },
         {
             "name": "pimple/pimple",
