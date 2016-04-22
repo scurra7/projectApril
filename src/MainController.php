@@ -7,6 +7,7 @@ use Itb\Member;
 
 
 use Silex\Application;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class MainController
@@ -83,13 +84,13 @@ class MainController
             if($isRole)
             {
             // store username in 'user' in 'session'
-            $app['session']->set('user', array('username' => $username));
+            $app['session']->set('user', array('username' => $username, 'role' => $isRole));
             // success - redirect to the secure admin home page
             return $app->redirect('/admin');
             }
             else {
                 // store username in 'user' in 'session'
-                $app['session']->set('user', array('username' => $username));
+                $app['session']->set('user', array('username' => $username, 'role' => $isRole));
                 // success - redirect to the secure admin home page
                 return $app->redirect('/student');
             }
@@ -112,7 +113,6 @@ class MainController
 
         $user = $app['session']->get('user');
 
-
         $members =Member::getAll();
 
 
@@ -122,8 +122,15 @@ class MainController
 
         );
 
-        $templateName = 'admin';
-        return $app['twig']->render($templateName . '.html.twig', $argsArray);
+        if($user['role']) {
+
+            $templateName = 'admin';
+            return $app['twig']->render($templateName . '.html.twig', $argsArray);
+        }else
+        {
+            return new RedirectResponse("/student");
+        }
+
     }
 
     public function studentPageAction(Request $request, Application $app)
@@ -131,15 +138,26 @@ class MainController
 
         $user = $app['session']->get('user');
 
+        if($user['role']) {
+            $students = Student::getAll();
 
-        $students =Student::getAll();
+            $argsArray = array(
 
-        $argsArray = array(
+                'students'=> $students,
+                'username' => $user['username']
 
-            'students'=> $students,
-            'username' => $user['username']
+            );
+        }
+        else {
+            $students = Student::searchByColumn('id', 2);
+            $argsArray = array(
 
-        );
+                'students'=> $students,
+                'username' => $user['username']
+
+            );
+        }
+
 
         $templateName = 'student';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
