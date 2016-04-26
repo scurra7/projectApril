@@ -36,12 +36,6 @@ class MemberController
 
 
 
-
-
-
-
-
-
     public function editMemberDisplayAction(Request $request, Application $app, $id)
     {
 
@@ -56,6 +50,7 @@ class MemberController
         $templateName = 'editMemberRow';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
     }
+
 
     public function editMemberDetailsAction(Request $request, Application $app)
     {
@@ -107,14 +102,10 @@ class MemberController
     public function createMemberAction(Request $request, Application $app)
     {
 
-
-
-
         $argsArray = [
 
         ];
 
-        //return $app->redirect('/admin');
 
         $templateName = 'createMember';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
@@ -184,12 +175,12 @@ class MemberController
             'members' => $members,
             'text' => ''
         ];
-        // print("hello");
-       //  die();
+
+
         $templateName = 'deleteMember';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
 
-       // return $app->redirect('/admin');
+
     }
 
     public function deleteMemberAction(Request $request, Application $app, $id)

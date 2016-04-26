@@ -143,7 +143,8 @@ class MainController
     {
 
         $user = $app['session']->get('user');
-       // print_r($user) and die;
+
+       //print_r($user); die();
         if($user['role']) {
             $students = Student::getAll();
 
@@ -153,6 +154,9 @@ class MainController
                 'username' => $user['username']
 
             );
+        }
+        else if($user['role'] == null) {
+            return new RedirectResponse("/");
         }
         else {
             $students = Student::searchByColumn('id', 2);

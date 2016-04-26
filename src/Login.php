@@ -27,6 +27,7 @@ class Login extends DatabaseTable
 
     /**
      * @return mixed
+     * get Username
      */
     public function getUsername()
     {
@@ -35,6 +36,7 @@ class Login extends DatabaseTable
 
     /**
      * @param mixed $username
+     * set Username
      */
     public function setUsername($username)
     {
@@ -43,6 +45,7 @@ class Login extends DatabaseTable
 
     /**
      * @return mixed
+     * get user Id
      */
     public function getId()
     {
@@ -51,6 +54,7 @@ class Login extends DatabaseTable
 
     /**
      * @param mixed $id
+     * set user Id
      */
     public function setId($id)
     {
@@ -59,6 +63,7 @@ class Login extends DatabaseTable
 
     /**
      * @return mixed
+     * get user Password
      */
     public function getPassword()
     {
@@ -67,6 +72,7 @@ class Login extends DatabaseTable
 
     /**
      * @param mixed $password
+     * hashed's users password
      */
     public function setPassword($password)
     {
@@ -107,6 +113,7 @@ class Login extends DatabaseTable
     }
     /**
      * @return mixed
+     * get user Role
      */
     public function getRole()
     {
@@ -115,6 +122,7 @@ class Login extends DatabaseTable
 
     /**
      * @param mixed $username
+     * set user Roles
      */
     public function setRole($role)
     {

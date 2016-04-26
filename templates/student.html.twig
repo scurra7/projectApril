@@ -28,6 +28,7 @@
         <th>joined Club</th>
         <th>Last Grading </th>
         <th>Current Grade</th>
+        <th>View</th>
         <th>Edit</th>
     </tr>
 
@@ -41,6 +42,7 @@
         <td>{{student.lastGrading }}</td>
         <td>{{student.currentGrade  }}</td>
       <td><a href="/studentDetail/{{ student.id }}">{{  student.id }}</a></td>
+        <td><a href="/editMember/{{ student.id }}">edit</a></td>
 
     </tr>
 

@@ -15,6 +15,8 @@ class Student extends DatabaseTable
     /**
      *
      * @var
+     * for student id, surname, first name, date student joined club,
+     * last grading and current standing
      */
     private $id;
     private $surname;
@@ -25,6 +27,7 @@ class Student extends DatabaseTable
 
     /**
      * @return mixed
+     * get student current grade
      */
     public function getCurrentGrading()
     {
