@@ -65,6 +65,12 @@ class MainController
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
     }
 
+    /**
+     * @param Request $request
+     * @param Application $app
+     * @return RedirectResponse
+     */
+
     public function loginAction(Request $request, Application $app)
     {
 
@@ -137,7 +143,7 @@ class MainController
     {
 
         $user = $app['session']->get('user');
-
+       // print_r($user) and die;
         if($user['role']) {
             $students = Student::getAll();
 
@@ -171,7 +177,7 @@ class MainController
         $app['session']->set('user', null );
 
         // redirect to home page
-//        return $app->redirect('/');
+       //return $app->redirect('/');
 
         // render (draw) template
         // ------------

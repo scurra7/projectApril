@@ -51,7 +51,7 @@ class MemberController
         $argsArray = [
             'memberRow' => $memberRow,
         ];
-        $app['session']->set('user', array('id' => $id));
+        //$app['session']->set('user', array('id' => $id));
 
         $templateName = 'editMemberRow';
         return $app['twig']->render($templateName . '.html.twig', $argsArray);
